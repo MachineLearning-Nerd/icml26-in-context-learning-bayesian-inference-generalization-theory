@@ -3,6 +3,17 @@
 This page is the canonical evaluator entrypoint. It supersedes the verifier in
 the judged revision `b604006ac298769e9dcee6ecb42b45369eb68cce`.
 
+Run the self-contained downloaded candidate with:
+
+```bash
+uv run --locked python repro/src/verify.py
+```
+
+The candidate includes [pyproject.toml](../../pyproject.toml),
+[uv.lock](../../uv.lock), and the [cumulative verifier](../../repro/src/verify.py).
+It uses Python `3.12.*`, no third-party dependencies, one process thread, and
+no random seeds.
+
 ## Claim 2 — FALSIFIED
 
 **Exact source statement.** Theorem 2 claims that the one ERM shared across
@@ -212,6 +223,30 @@ domain, not invariant under input shift.
 | 3 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
+
+## Formal run provenance
+
+Every node inherited the exact command above. The available machine exposed 8
+logical CPUs; each verifier used one process thread.
+
+| Claim | Git commit | Formal run | Verifier runtime | Backend |
+|---|---|---|---:|---|
+| protected baseline | `b93498efc81cecc11a2fbc9a1a89c40301284d47` | `1d70482e-43d4-4950-8354-9fb9de68d590` | 0.0258 s | local CPU |
+| 1 | `331ad74021a3d13bf6051455d04d5c7fcbe00840` | `e633c5fa-79f3-49e3-9c08-ba8d5c4d20f3` | 0.102255 s | local CPU |
+| 5 | `b147737ea8818a2a56a978e2d9b2d8c53a77eaa0` | `e976b805-6521-4dea-a201-0b7b79eed65a` | 0.120083 s | local CPU |
+| 3 | `8c193731318a615dea15e5b075bbe88d64f015ff` | `55589bde-2794-41a9-9bf0-4784bbb56182` | 0.143983 s | local CPU |
+| 4 | `afa6f38f58cdc95c92b63db3848bf9f32911a46c` | `436eaf4e-1d8f-48dc-89f1-0422b5f4c14c` | 0.149517 s | local CPU |
+| 2 | `fad5f06e7ee063dc370b14001fdcf88a3244b1f2` | `f9ec1820-b9c0-44ac-8075-39d845bd3890` | 0.142646 s | local CPU |
+
+Estimated before every run: one core and under one minute. Selected allocation:
+local CPU under the authorized short-task rule. Total verifier runtime across
+the six formal nodes was 0.684284 seconds; external compute cost was $0.
+
+## Score forecast, not a judge result
+
+Previous live judged score: `5/10`. Conservative projected range after this
+candidate: `9–10/10`. Best-supported possible score: `10/10` forecast. The
+live score remains 5/10 until the evaluator judges the published revision.
 
 ## Historical rejected baseline
 

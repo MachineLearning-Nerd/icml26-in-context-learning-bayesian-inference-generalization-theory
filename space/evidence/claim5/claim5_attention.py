@@ -5,6 +5,7 @@ from __future__ import annotations
 from decimal import Decimal, getcontext
 from fractions import Fraction
 from itertools import permutations
+import json
 
 
 Vector = tuple[Fraction, ...]
@@ -94,3 +95,9 @@ def build_certificate() -> dict:
         "negative_control": control,
         "passed": permutations_result["passed"] and control["rejected_as_uniform_attention"],
     }
+
+
+if __name__ == "__main__":
+    certificate = build_certificate()
+    print(json.dumps(certificate, indent=2, sort_keys=True))
+    raise SystemExit(0 if certificate["passed"] else 1)

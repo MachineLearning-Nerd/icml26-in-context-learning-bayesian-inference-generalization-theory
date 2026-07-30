@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from fractions import Fraction
 from itertools import product
+import json
 
 
 def moments(weights: tuple[Fraction, ...], values: tuple[Fraction, ...], prediction: Fraction):
@@ -89,3 +90,9 @@ def build_certificate() -> dict:
         "negative_control": control,
         "passed": algebra["passed"] and exhaustive["passed"] and control["rejected"],
     }
+
+
+if __name__ == "__main__":
+    certificate = build_certificate()
+    print(json.dumps(certificate, indent=2, sort_keys=True))
+    raise SystemExit(0 if certificate["passed"] else 1)

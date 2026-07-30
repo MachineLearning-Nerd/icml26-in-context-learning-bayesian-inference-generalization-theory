@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" role="img" aria-labelledby="title desc">
+  <title id="title">Theorem 4 stability and interpretation control</title>
+  <desc id="desc">The Bayes Gap Wasserstein bound is verified, while posterior variance is not invariant across domains.</desc>
+  <rect width="1000" height="470" rx="24" fill="#f8fafc"/>
+  <text x="50" y="58" fill="#0f172a" font-family="sans-serif" font-size="28" font-weight="700">Claim 4: exact theorem versus stronger misreading</text>
+  <g font-family="sans-serif">
+    <rect x="55" y="100" width="890" height="105" rx="18" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="500" y="140" text-anchor="middle" fill="#1e3a8a" font-size="17" font-weight="700">Verified Bayes-Gap theorem</text>
+    <text x="500" y="175" text-anchor="middle" fill="#0f172a" font-size="18">|R_BG(Q) − R_BG(P)| ≤ 2(B_M+B_f)(L+Λα) × prompt Wasserstein</text>
+    <text x="75" y="255" fill="#334155" font-size="17">Posterior variance interpretation control</text>
+    <line x1="160" y1="405" x2="820" y2="405" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="250" y="397" width="150" height="8" fill="#60a5fa"/>
+    <text x="325" y="435" text-anchor="middle" fill="#1e3a8a" font-size="16">source P: 0</text>
+    <rect x="600" y="285" width="150" height="120" fill="#f97316"/>
+    <text x="675" y="435" text-anchor="middle" fill="#9a3412" font-size="16">target Q: 1/4</text>
+    <text x="500" y="300" text-anchor="middle" fill="#991b1b" font-size="17" font-weight="700">“Intrinsic to target” ≠ invariant across domains</text>
+  </g>
+</svg>

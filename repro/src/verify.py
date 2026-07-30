@@ -36,6 +36,18 @@ def baseline_checks() -> dict[str, bool]:
     verdict_path = ARTIFACTS / "live_verdict.json"
     verdict = json.loads(verdict_path.read_text())
     manifest_lines = (ARTIFACTS / "protected_space_manifest.sha256").read_text().splitlines()
+    corrected_manifest_lines = (
+        ARTIFACTS / "protected_space_manifest_corrected.sha256"
+    ).read_text().splitlines()
+    protected_manifest = {
+        line.split()[1]: line.split()[0] for line in corrected_manifest_lines
+    }
+    historical_pages = [
+        path for path in protected_manifest if path.startswith("pages/")
+    ]
+    historical_snapshot = (
+        ROOT / "space" / "historical" / "judged_b604006a"
+    )
 
     return {
         "space_id_exact": verdict["space_id"] == "DineshAI/BUFSSOuphA",
@@ -45,6 +57,19 @@ def baseline_checks() -> dict[str, bool]:
         "all_historical_claims_toy": all(claim["verdict"] == "toy" for claim in verdict["claims"]),
         "paper_hash_recorded": verdict["paper_source_sha256"] == EXPECTED_PAPER_SHA256,
         "protected_manifest_complete": len(manifest_lines) == 17,
+        "protected_file_set_is_subset": all(
+            (ROOT / "space" / path).is_file() for path in protected_manifest
+        ),
+        "historical_pages_unchanged": all(
+            sha256(ROOT / "space" / path) == protected_manifest[path]
+            for path in historical_pages
+        ),
+        "judged_root_snapshot_preserved": (
+            sha256(historical_snapshot / "README.md")
+            == protected_manifest["README.md"]
+            and sha256(historical_snapshot / "logbook.json")
+            == protected_manifest["logbook.json"]
+        ),
         "verdict_snapshot_hash": sha256(verdict_path)
         == "485bd5f6abf2423da5ad4010a5fd0b1d861b6ef5a639cd193b6b7e9f046b3e48",
     }
@@ -117,6 +142,32 @@ def main() -> int:
         "claim2_result_inline": current_page.is_file()
         and "uniform lower bound `1/255`" in current_page.read_text()
         and "Bayes means `1/3` and `3/5`" in current_page.read_text(),
+        "self_contained_space_verifier": all(
+            path.is_file()
+            for path in (
+                ROOT / "space" / "repro" / "src" / "verify.py",
+                ROOT / "space" / "pyproject.toml",
+                ROOT / "space" / "uv.lock",
+            )
+        ),
+        "illustrated_report_complete": all(
+            path.is_file()
+            for path in (
+                ROOT / "reports" / "reproduction" / "report.md",
+                ROOT / "reports" / "reproduction" / "images" / "headline-results.svg",
+                ROOT / "reports" / "reproduction" / "images" / "cardinality-collision.svg",
+                ROOT / "reports" / "reproduction" / "images" / "theorem3-proof-chain.svg",
+                ROOT / "reports" / "reproduction" / "images" / "theorem4-shift.svg",
+                ROOT / "reports" / "reproduction" / "release_report.md",
+            )
+        ),
+        "tutorial_notebook_visible": (
+            ROOT / "notebooks" / "icl_bayesian_reproduction.py"
+        ).is_file(),
+        "readme_current": (
+            "Theorem 2 is **FALSIFIED**" in (ROOT / "README.md").read_text()
+            and "Open in molab" in (ROOT / "README.md").read_text()
+        ),
     }
     passed = (
         all(checks.values())
@@ -129,7 +180,7 @@ def main() -> int:
         and all(visibility_checks.values())
     )
     result = {
-        "campaign_stage": "claim_2_cardinality_collision_falsification",
+        "campaign_stage": "evaluator_visible_release_candidate",
         "status": "VERIFIED" if passed else "BLOCKED",
         "passed_manifest_checks": passed,
         "checks": checks,

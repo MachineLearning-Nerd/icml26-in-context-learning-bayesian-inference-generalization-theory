@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
+  <title id="title">Theorem 2 cardinality collision</title>
+  <desc id="desc">One and two repeated examples have the same mean pool but different Bayesian posterior means.</desc>
+  <rect width="1000" height="520" rx="24" fill="#f8fafc"/>
+  <text x="50" y="58" fill="#0f172a" font-family="sans-serif" font-size="28" font-weight="700">Claim 2: mean pooling erases Bayesian evidence count</text>
+  <g font-family="sans-serif">
+    <rect x="55" y="105" width="310" height="170" rx="18" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="80" y="140" fill="#1e3a8a" font-size="18" font-weight="700">k = 1</text>
+    <text x="80" y="178" fill="#0f172a" font-size="17">context: [(x=0, y=1)]</text>
+    <text x="80" y="214" fill="#0f172a" font-size="17">Bayes mean = 1/3</text>
+    <text x="80" y="248" fill="#475569" font-size="15">event probability = 3/8</text>
+    <rect x="55" y="315" width="310" height="170" rx="18" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="80" y="350" fill="#5b21b6" font-size="18" font-weight="700">k = 2</text>
+    <text x="80" y="388" fill="#0f172a" font-size="17">context: [(0,1), (0,1)]</text>
+    <text x="80" y="424" fill="#0f172a" font-size="17">Bayes mean = 3/5</text>
+    <text x="80" y="458" fill="#475569" font-size="15">event probability = 5/32</text>
+    <path d="M385 190 L535 260" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M385 395 L535 300" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="540" y="210" width="400" height="130" rx="18" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+    <text x="740" y="247" text-anchor="middle" fill="#991b1b" font-size="18" font-weight="700">Identical model input</text>
+    <text x="740" y="280" text-anchor="middle" fill="#0f172a" font-size="17">φ(u) = [φ(u)+φ(u)] / 2</text>
+    <text x="740" y="315" text-anchor="middle" fill="#991b1b" font-size="17">best shared prediction = 7/17</text>
+    <rect x="570" y="375" width="340" height="85" rx="16" fill="#4a1d28"/>
+    <text x="740" y="410" text-anchor="middle" fill="#fecdd3" font-size="17">Every θ, every m, every ERM</text>
+    <text x="740" y="442" text-anchor="middle" fill="#ffffff" font-size="25" font-weight="700">R_BG ≥ 1/255</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

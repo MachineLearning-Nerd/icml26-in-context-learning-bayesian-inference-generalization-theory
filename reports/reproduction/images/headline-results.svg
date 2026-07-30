@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-labelledby="title desc">
+  <title id="title">Five claim outcomes</title>
+  <desc id="desc">Claims 1, 3, 4, and 5 verified. Claim 2 falsified.</desc>
+  <rect width="1000" height="380" rx="24" fill="#0b1020"/>
+  <text x="50" y="62" fill="#f8fafc" font-family="sans-serif" font-size="30" font-weight="700">Exact claim-by-claim outcome</text>
+  <text x="50" y="98" fill="#94a3b8" font-family="sans-serif" font-size="17">Four universal proof certificates · one assumption-satisfying counterexample</text>
+  <g font-family="sans-serif" text-anchor="middle">
+    <g transform="translate(50,135)">
+      <rect width="164" height="165" rx="18" fill="#123d32" stroke="#34d399" stroke-width="2"/>
+      <text x="82" y="42" fill="#a7f3d0" font-size="18">Claim 1</text>
+      <text x="82" y="84" fill="#ffffff" font-size="22" font-weight="700">VERIFIED</text>
+      <text x="82" y="118" fill="#d1fae5" font-size="14">risk identity</text>
+      <text x="82" y="143" fill="#6ee7b7" font-size="13">3,350 exact cases</text>
+    </g>
+    <g transform="translate(234,135)">
+      <rect width="164" height="165" rx="18" fill="#4a1d28" stroke="#fb7185" stroke-width="2"/>
+      <text x="82" y="42" fill="#fecdd3" font-size="18">Claim 2</text>
+      <text x="82" y="84" fill="#ffffff" font-size="22" font-weight="700">FALSIFIED</text>
+      <text x="82" y="118" fill="#ffe4e6" font-size="14">shared-k rate</text>
+      <text x="82" y="143" fill="#fda4af" font-size="13">R_BG ≥ 1/255</text>
+    </g>
+    <g transform="translate(418,135)">
+      <rect width="164" height="165" rx="18" fill="#123d32" stroke="#34d399" stroke-width="2"/>
+      <text x="82" y="42" fill="#a7f3d0" font-size="18">Claim 3</text>
+      <text x="82" y="84" fill="#ffffff" font-size="22" font-weight="700">VERIFIED</text>
+      <text x="82" y="118" fill="#d1fae5" font-size="14">concentration</text>
+      <text x="82" y="143" fill="#6ee7b7" font-size="13">4,568 exact cases</text>
+    </g>
+    <g transform="translate(602,135)">
+      <rect width="164" height="165" rx="18" fill="#123d32" stroke="#34d399" stroke-width="2"/>
+      <text x="82" y="42" fill="#a7f3d0" font-size="18">Claim 4</text>
+      <text x="82" y="84" fill="#ffffff" font-size="22" font-weight="700">VERIFIED</text>
+      <text x="82" y="118" fill="#d1fae5" font-size="14">Wasserstein</text>
+      <text x="82" y="143" fill="#6ee7b7" font-size="13">4,058 exact cases</text>
+    </g>
+    <g transform="translate(786,135)">
+      <rect width="164" height="165" rx="18" fill="#123d32" stroke="#34d399" stroke-width="2"/>
+      <text x="82" y="42" fill="#a7f3d0" font-size="18">Claim 5</text>
+      <text x="82" y="84" fill="#ffffff" font-size="22" font-weight="700">VERIFIED</text>
+      <text x="82" y="118" fill="#d1fae5" font-size="14">Q=K=0 attention</text>
+      <text x="82" y="143" fill="#6ee7b7" font-size="13">873 permutations</text>
+    </g>
+  </g>
+  <text x="50" y="345" fill="#cbd5e1" font-family="sans-serif" font-size="16">Every verdict is proof-level: no toy result is promoted.</text>
+</svg>
