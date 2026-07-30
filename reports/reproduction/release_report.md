@@ -83,6 +83,25 @@ crossed the remote-compute threshold.
 - Tutorial notebook: `notebooks/icl_bayesian_reproduction.py`
 - Protected judged manifest:
   `.openresearch/artifacts/baseline/protected_space_manifest.sha256`
+- Evaluator-blind review:
+  `reports/reproduction/evaluator_red_team.md`
+- Text upload allowlist and SHA-256 manifest:
+  `.openresearch/artifacts/release/space_text_upload_allowlist.txt` and
+  `.openresearch/artifacts/release/space_text_upload_manifest.sha256`
+
+## Protected-history and upload checks
+
+The judged revision contains 17 protected files. All 17 paths are present in
+the 74-file candidate, and every protected historical page retains its judged
+SHA-256. The candidate upload allowlist contains exactly 70 text paths. The
+four preserved binary assets (one SVG and three PNG files) are not uploaded;
+they remain at the existing Space revision. The text secret scan is clean.
+
+The candidate Space subtree is
+`121bacacf9b7665cd19fc49740350a12d10d9862`. The allowlist SHA-256 is
+`aa118e5281c603875ac02b88f0ee500aad090c11ae739ba4d6045420d1329fb9`;
+the upload-manifest SHA-256 is
+`fbf027d98d01cfd6f5f23d2177aa5dd42b2ffca19cad64bed67320f5d185c6cc`.
 
 ## Publication action
 

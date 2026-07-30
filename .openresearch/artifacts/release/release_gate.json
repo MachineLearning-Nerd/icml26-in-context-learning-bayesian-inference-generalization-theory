@@ -1,0 +1,19 @@
+{
+  "candidate_content_commit": "061d6b3f1a52f25c84adbe863c652cf69403ab1f",
+  "candidate_space_tree": "121bacacf9b7665cd19fc49740350a12d10d9862",
+  "canonical_entrypoint": "README.md",
+  "candidate_file_count": 74,
+  "protected_file_count": 17,
+  "protected_missing_count": 0,
+  "protected_historical_hashes_match": true,
+  "text_upload_file_count": 70,
+  "binary_assets_uploaded": false,
+  "allowlist_sha256": "aa118e5281c603875ac02b88f0ee500aad090c11ae739ba4d6045420d1329fb9",
+  "manifest_sha256": "fbf027d98d01cfd6f5f23d2177aa5dd42b2ffca19cad64bed67320f5d185c6cc",
+  "manifest_hashes_match": true,
+  "secret_scan_clean": true,
+  "packaged_verifier_status": "PASS",
+  "evaluator_blind_round_1": "BLOCKED_NAVIGATION",
+  "evaluator_blind_round_2": "PASS",
+  "release_ready": true
+}

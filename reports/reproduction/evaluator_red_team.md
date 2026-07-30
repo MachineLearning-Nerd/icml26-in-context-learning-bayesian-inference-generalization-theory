@@ -37,6 +37,75 @@ and repository verifier both require those links and files.
 
 ## Round 2
 
-The second review is performed from a fresh export of the final candidate
-commit. Its exact commit, complete opened-file trace, and conclusion are
-recorded before the formal release-gate run.
+The second review used a fresh export of commit
+`061d6b3f1a52f25c84adbe863c652cf69403ab1f`, whose Space subtree is
+`121bacacf9b7665cd19fc49740350a12d10d9862`. It began again at `README.md`
+and opened exactly:
+
+```text
+README.md
+logbook.json
+pages/current/page.md
+pyproject.toml
+uv.lock
+repro/src/verify.py
+evidence/claim1/EVAL.md
+evidence/claim1/claim1_proof.py
+evidence/claim1/claim_contract.json
+evidence/claim1/exact_command.md
+evidence/claim1/independent_checker_output.json
+evidence/claim1/limitations.md
+evidence/claim1/method.md
+evidence/claim1/negative_control_output.json
+evidence/claim1/raw_proof.json
+evidence/claim1/source_audit.md
+evidence/claim2/EVAL.md
+evidence/claim2/claim2_counterexample.py
+evidence/claim2/claim2_independent.py
+evidence/claim2/claim_contract.json
+evidence/claim2/exact_command.md
+evidence/claim2/independent_checker_output.json
+evidence/claim2/limitations.md
+evidence/claim2/method.md
+evidence/claim2/negative_control_output.json
+evidence/claim2/raw_counterexample.json
+evidence/claim2/source_audit.md
+evidence/claim3/EVAL.md
+evidence/claim3/claim3_concentration.py
+evidence/claim3/claim_contract.json
+evidence/claim3/exact_command.md
+evidence/claim3/independent_checker_output.json
+evidence/claim3/limitations.md
+evidence/claim3/method.md
+evidence/claim3/negative_control_output.json
+evidence/claim3/raw_proof.json
+evidence/claim3/source_audit.md
+evidence/claim4/EVAL.md
+evidence/claim4/claim4_stability.py
+evidence/claim4/claim_contract.json
+evidence/claim4/exact_command.md
+evidence/claim4/independent_checker_output.json
+evidence/claim4/limitations.md
+evidence/claim4/method.md
+evidence/claim4/negative_control_output.json
+evidence/claim4/raw_proof.json
+evidence/claim4/source_audit.md
+evidence/claim5/EVAL.md
+evidence/claim5/claim5_attention.py
+evidence/claim5/claim_contract.json
+evidence/claim5/exact_command.md
+evidence/claim5/independent_checker_output.json
+evidence/claim5/limitations.md
+evidence/claim5/method.md
+evidence/claim5/negative_control_output.json
+evidence/claim5/raw_proof.json
+evidence/claim5/source_audit.md
+```
+
+Every linked file existed. The packaged fixed command
+`uv run --locked python repro/src/verify.py` exited zero with status `PASS`.
+The reviewer located all source quantifiers, assumption audits, inline data,
+raw downloads, code, checkers, controls, limitations, formal provenance, and
+historical labeling without external hints.
+
+Conclusion: **PASS — release-ready**.

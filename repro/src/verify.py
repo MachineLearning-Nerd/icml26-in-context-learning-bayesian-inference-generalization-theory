@@ -104,6 +104,7 @@ def release_checks() -> dict[str, bool]:
     red_team = (
         ROOT / "reports" / "reproduction" / "evaluator_red_team.md"
     ).read_text()
+    gate = json.loads((RELEASE_ARTIFACTS / "release_gate.json").read_text())
 
     return {
         "upload_allowlist_exact": allowlist == candidate_text_files,
@@ -121,6 +122,19 @@ def release_checks() -> dict[str, bool]:
         ),
         "red_team_repeated_after_fix": (
             "Conclusion: **PASS — release-ready**" in red_team
+        ),
+        "release_gate_recorded": (
+            gate["release_ready"]
+            and gate["candidate_space_tree"]
+            == "121bacacf9b7665cd19fc49740350a12d10d9862"
+            and gate["protected_missing_count"] == 0
+        ),
+        "candidate_logbook_valid": all(
+            json.loads(path.read_text()) is not None
+            for path in (
+                ROOT / "space" / "logbook.json",
+                ROOT / "space" / "historical" / "judged_b604006a" / "logbook.json",
+            )
         ),
     }
 
