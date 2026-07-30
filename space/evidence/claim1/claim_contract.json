@@ -1,0 +1,16 @@
+{
+  "claim": 1,
+  "source_anchor": "Thmtheorem1",
+  "verdict_values": ["VERIFIED", "FALSIFIED", "BLOCKED"],
+  "domain": "Definition 1 prompt-generating process under Assumption 1",
+  "quantifiers": "For every measurable bounded map M; average over every k=1,...,p",
+  "statement": "R(M) = R_BG(M) + R_PV, where R_BG is the squared distance to E[f(x_{k+1})|P^k] and R_PV is the corresponding conditional variance.",
+  "acceptance": [
+    "Exact polynomial expansion exposes only the conditional-mean cross term.",
+    "The cross term is zero from the defining conditional expectation.",
+    "An independently implemented exact-rational checker finds no counterexample.",
+    "A wrong-center negative control is rejected with a nonzero exact residual.",
+    "The cumulative verifier exits nonzero if any obligation fails."
+  ],
+  "non_circularity": "No sample size, tolerance, fitted slope, or theorem-derived resource budget is used."
+}

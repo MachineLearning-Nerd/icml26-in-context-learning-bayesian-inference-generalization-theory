@@ -1,0 +1,10 @@
+{
+  "checker": "Python standard-library fractions.Fraction exhaustive enumeration",
+  "support_sizes": [1, 2, 3],
+  "maximum_weight_denominator": 4,
+  "values": [-2, -1, 0, 1, 2],
+  "predictions": [-2, -1, 0, 1, 2],
+  "exact_cases": 3350,
+  "failed_cases": 0,
+  "passed": true
+}

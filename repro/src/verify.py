@@ -9,6 +9,8 @@ import platform
 import time
 from pathlib import Path
 
+from claim1_proof import build_certificate
+
 
 ROOT = Path(__file__).resolve().parents[2]
 ARTIFACTS = ROOT / ".openresearch" / "artifacts" / "baseline"
@@ -25,13 +27,12 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def main() -> int:
-    started = time.monotonic()
+def baseline_checks() -> dict[str, bool]:
     verdict_path = ARTIFACTS / "live_verdict.json"
     verdict = json.loads(verdict_path.read_text())
     manifest_lines = (ARTIFACTS / "protected_space_manifest.sha256").read_text().splitlines()
 
-    checks = {
+    return {
         "space_id_exact": verdict["space_id"] == "DineshAI/BUFSSOuphA",
         "space_revision_exact": verdict["sha"] == EXPECTED_SPACE_REVISION,
         "judge_score_exact": verdict["score"] == EXPECTED_JUDGE_SCORE,
@@ -42,13 +43,40 @@ def main() -> int:
         "verdict_snapshot_hash": sha256(verdict_path)
         == "485bd5f6abf2423da5ad4010a5fd0b1d861b6ef5a639cd193b6b7e9f046b3e48",
     }
-    passed = all(checks.values())
+
+
+def main() -> int:
+    started = time.monotonic()
+    checks = baseline_checks()
+    claim1 = build_certificate()
+    current_page = ROOT / "space" / "pages" / "current" / "page.md"
+    visible_files = [
+        ROOT / "space" / "evidence" / "claim1" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim1" / "raw_proof.json",
+        ROOT / "space" / "evidence" / "claim1" / "independent_checker_output.json",
+        ROOT / "space" / "evidence" / "claim1" / "negative_control_output.json",
+        ROOT / "space" / "evidence" / "claim1" / "claim1_proof.py",
+    ]
+    visibility_checks = {
+        "canonical_current_page": current_page.is_file(),
+        "claim1_evidence_files": all(path.is_file() for path in visible_files),
+        "claim1_result_inline": current_page.is_file()
+        and "3,350 exact" in current_page.read_text(),
+        "historical_verifier_labeled": current_page.is_file()
+        and "Historical rejected baseline" in current_page.read_text(),
+    }
+    passed = all(checks.values()) and claim1["passed"] and all(visibility_checks.values())
     result = {
-        "campaign_stage": "protected_judged_baseline",
-        "status": "TOY",
+        "campaign_stage": "claim_1_exact_risk_identity",
+        "status": "VERIFIED" if passed else "BLOCKED",
         "passed_manifest_checks": passed,
         "checks": checks,
-        "claims": [{"claim": index, "verdict": "TOY"} for index in range(1, 6)],
+        "visibility_checks": visibility_checks,
+        "claims": [
+            {"claim": 1, "verdict": "VERIFIED" if claim1["passed"] else "BLOCKED"},
+            *[{"claim": index, "verdict": "TOY"} for index in range(2, 6)],
+        ],
+        "claim_1_certificate": claim1,
         "historical_limitation": (
             "The judged Space embeds verify.py but omits its imported core.py, so the numerical "
             "baseline cannot be independently regenerated from the protected revision."

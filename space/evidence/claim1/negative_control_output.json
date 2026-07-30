@@ -1,0 +1,6 @@
+{
+  "control": "replace E[F|D] by E[F|D]+1/2 and omit the cross term",
+  "exact_residual": "-3/2",
+  "expected": "nonzero residual",
+  "rejected": true
+}
