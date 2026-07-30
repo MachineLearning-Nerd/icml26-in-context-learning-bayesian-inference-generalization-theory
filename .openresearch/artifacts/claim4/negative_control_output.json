@@ -1,0 +1,14 @@
+{
+  "posterior_variance_invariance": {
+    "control": "assert R_PV^(P)=R_PV^(Q) under every input shift",
+    "interpretation": "Theorem 4 bounds Bayes Gap. Intrinsic to the target domain means model-independent within that domain, not invariant between domains.",
+    "rejected": true,
+    "source_exact": "0",
+    "target_exact": "1/4"
+  },
+  "weakened_square_prefactor": {
+    "control": "replace 2(B_M+B_f) by (B_M+B_f)",
+    "exact_residual": "1",
+    "rejected": true
+  }
+}

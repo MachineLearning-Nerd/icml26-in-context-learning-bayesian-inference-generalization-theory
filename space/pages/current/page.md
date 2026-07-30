@@ -114,6 +114,46 @@ assumptions gate rather than misreported as a counterexample.
 - [Method](../../evidence/claim3/method.md)
 - [Limitations](../../evidence/claim3/limitations.md)
 
+## Claim 4 — VERIFIED
+
+**Exact source statement.** For every parameter `theta`, Theorem 4 bounds the
+absolute source-to-target change in Bayes Gap by
+
+`[2(B_M+B_f)/p] sum_k (L+Lambda_alpha) W_alpha^(k)`,
+
+with
+`Lambda_alpha=(L_s Lip(phi_theta)+L_c)(diam(U)+diam(C))^(1-alpha)`.
+
+**Universal proof certificate.** Mean pooling plus the encoder/decoder
+Lipschitz constants and `t<=D^(1-alpha)t^alpha` give `Lambda_alpha`; the
+assumed Bayes modulus contributes `L`. The identity
+`|a^2-b^2|=|a-b||a+b|` gives the exact `2(B_M+B_f)` factor. Under every
+source-target coupling, expectation difference is bounded by the Lipschitz
+modulus times expected prompt distance. Taking the infimum over couplings and
+averaging over `k` is exactly the displayed Wasserstein bound.
+
+**Independent checker.** **4,058 exact rational cases** passed: 1,600
+architectural-modulus, 44 Hölder conversion, 164 squared-loss, and 2,250
+two-point transport cases.
+
+**Negative controls and interpretation.** Removing the factor 2 fails by exact
+residual `1`. More importantly, Theorem 4 does **not** assert posterior
+variance invariance across domains. With prior one-half on bounded noiseless
+tasks `f_+(x)=x`, `f_-(x)=-x`, source `P_X=delta_0`, and target `Q_X` uniform
+on `{0,1}`, the one-context posterior variance is source `0`, target `1/4`.
+Thus “intrinsic to the target” means model-independent within the fixed target
+domain, not invariant under input shift.
+
+**Downloadable evidence.**
+
+- [Claim contract](../../evidence/claim4/claim_contract.json)
+- [Raw proof certificate](../../evidence/claim4/raw_proof.json)
+- [Independent checker output](../../evidence/claim4/independent_checker_output.json)
+- [Negative-control output](../../evidence/claim4/negative_control_output.json)
+- [Executable source](../../evidence/claim4/claim4_stability.py)
+- [Method](../../evidence/claim4/method.md)
+- [Limitations](../../evidence/claim4/limitations.md)
+
 ## Visibility matrix
 
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
@@ -121,7 +161,7 @@ assumptions gate rather than misreported as a counterexample.
 | 1 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 2 | pending | no | no | no | no | no | no | TOY |
 | 3 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
-| 4 | pending | no | no | no | no | no | no | TOY |
+| 4 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 
 ## Historical rejected baseline

@@ -1,0 +1,12 @@
+{
+  "claim": 4,
+  "passed": true,
+  "proof_obligations": {
+    "averaging": "apply at each k and divide by p",
+    "bayes_modulus": "the assumed Bayes predictor contributes L",
+    "model_modulus": "the architecture and Holder conversion give Lambda_alpha",
+    "square_modulus": "|a^2-b^2| gives 2(B_M+B_f)",
+    "transport": "bound under every coupling and take the infimum"
+  },
+  "status": "VERIFIED"
+}

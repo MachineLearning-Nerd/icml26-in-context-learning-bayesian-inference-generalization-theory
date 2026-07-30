@@ -1,0 +1,12 @@
+{
+  "posterior_variance_invariance": {
+    "control": "assert R_PV^(P)=R_PV^(Q) under every input shift",
+    "rejected": true,
+    "source_exact": "0",
+    "target_exact": "1/4"
+  },
+  "weakened_square_prefactor": {
+    "exact_residual": "1",
+    "rejected": true
+  }
+}

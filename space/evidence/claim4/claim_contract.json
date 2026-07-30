@@ -1,0 +1,15 @@
+{
+  "claim": 4,
+  "source_anchor": "Thmtheorem4",
+  "supporting_proof_anchor": "Thmtheorem7",
+  "domain": "Every theta and every source/target prompt-law pair satisfying the assumptions.",
+  "statement": "|R_BG^(Q)-R_BG^(P)| <= [2(B_M+B_f)/p] sum_k (L+Lambda_alpha) W_alpha^(k), with the exact Lambda_alpha in the theorem.",
+  "interpretation_boundary": "The theorem does not assert R_PV^(P)=R_PV^(Q). Intrinsic to the target domain means model-independent after the target law is fixed.",
+  "acceptance": [
+    "Derive Lambda_alpha and the squared-loss prefactor.",
+    "Prove the expectation bound for every coupling and take the Wasserstein infimum.",
+    "Use exact rational component checkers and negative controls.",
+    "Rerun all accepted claim checks."
+  ],
+  "non_circularity": "Universal coupling proof; no selected radius or fitted tolerance."
+}

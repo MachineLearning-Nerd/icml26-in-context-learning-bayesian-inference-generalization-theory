@@ -1,0 +1,7 @@
+{
+  "architecture_modulus": {"exact_cases": 1600, "passed": true},
+  "holder_conversion": {"exact_cases": 44, "passed": true},
+  "square_lipschitz": {"exact_cases": 164, "passed": true},
+  "two_point_transport": {"exact_cases": 2250, "passed": true},
+  "total_exact_cases": 4058
+}

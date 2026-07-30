@@ -1,0 +1,26 @@
+{
+  "claim": 4,
+  "source_anchor": "Thmtheorem4",
+  "supporting_proof_anchor": "Thmtheorem7",
+  "assumptions": [
+    "Definition 1 prompt process and Definition 2 uniform-attention predictor.",
+    "Assumption 1 bounded task functions and Assumption 2 bounded i.i.d. inputs with conditional independence.",
+    "Compact prompt component supports with finite diameters.",
+    "The Bayes predictor is alpha-Hölder with alpha in (0,1] and constant L.",
+    "The encoder and decoder have the stated Lipschitz constants and model output is bounded by B_M.",
+    "Only the input distribution shifts; task and noise distributions are unchanged."
+  ],
+  "domain": "Every parameter theta and every pair of source/target prompt laws satisfying the assumptions.",
+  "quantifiers": "The bound holds separately at every k=1,...,p and is averaged over k.",
+  "statement": "|R_BG^(Q)(M_theta)-R_BG^(P)(M_theta)| <= [2(B_M+B_f)/p] sum_k (L+Lambda_alpha) W_alpha^(k)(Law_P(P^k),Law_Q(P^k)), with Lambda_alpha=(L_s Lip(phi_theta)+L_c)(diam(U)+diam(C))^(1-alpha).",
+  "interpretation_boundary": "The theorem does not assert R_PV^(P)=R_PV^(Q). Intrinsic to the target domain means model-independent after the target law is fixed.",
+  "acceptance": [
+    "Derive the exact architectural Holder modulus Lambda_alpha.",
+    "Derive the exact squared-loss prefactor 2(B_M+B_f).",
+    "Prove the expectation bound directly for every coupling and take the Wasserstein infimum.",
+    "Use exact rational checkers for component inequalities.",
+    "Reject an incorrect posterior-variance invariance interpretation with an assumption-satisfying counterexample.",
+    "Inherit and rerun all accepted claim checks."
+  ],
+  "non_circularity": "No Wasserstein radius or tolerance is selected. The argument is a universal coupling inequality; finite exact sweeps are independent bug detectors."
+}

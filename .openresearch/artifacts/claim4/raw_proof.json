@@ -1,0 +1,13 @@
+{
+  "claim": 4,
+  "passed": true,
+  "proof_obligations": {
+    "averaging": "apply the bound at each k=1,...,p and divide by p",
+    "bayes_modulus": "the assumed Bayes predictor contributes L",
+    "model_modulus": "mean pooling, encoder Lipschitzness, decoder Lipschitzness, clipping, and t<=D^(1-alpha)t^alpha give Lambda_alpha",
+    "square_modulus": "|a^2-b^2|<=2(B_M+B_f)|a-b| gives the exact displayed prefactor",
+    "transport": "for every coupling, expectation difference is bounded by Lipschitz modulus times expected ground distance; take the coupling infimum"
+  },
+  "route": "universal coupling derivation plus exact rational checkers",
+  "status": "VERIFIED"
+}
