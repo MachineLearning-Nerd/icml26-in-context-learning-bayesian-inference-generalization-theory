@@ -10,6 +10,8 @@ import time
 from pathlib import Path
 
 from claim1_proof import build_certificate
+from claim2_counterexample import build_certificate as build_claim2_certificate
+from claim2_independent import independent_certificate as check_claim2_independently
 from claim3_concentration import build_certificate as build_claim3_certificate
 from claim4_stability import build_certificate as build_claim4_certificate
 from claim5_attention import build_certificate as build_claim5_certificate
@@ -52,6 +54,8 @@ def main() -> int:
     started = time.monotonic()
     checks = baseline_checks()
     claim1 = build_certificate()
+    claim2 = build_claim2_certificate()
+    claim2_independent = check_claim2_independently()
     claim3 = build_claim3_certificate()
     claim4 = build_claim4_certificate()
     claim5 = build_claim5_certificate()
@@ -84,6 +88,14 @@ def main() -> int:
         ROOT / "space" / "evidence" / "claim4" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim4" / "claim4_stability.py",
     ]
+    claim2_visible_files = [
+        ROOT / "space" / "evidence" / "claim2" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim2" / "raw_counterexample.json",
+        ROOT / "space" / "evidence" / "claim2" / "independent_checker_output.json",
+        ROOT / "space" / "evidence" / "claim2" / "negative_control_output.json",
+        ROOT / "space" / "evidence" / "claim2" / "claim2_counterexample.py",
+        ROOT / "space" / "evidence" / "claim2" / "claim2_independent.py",
+    ]
     visibility_checks = {
         "canonical_current_page": current_page.is_file(),
         "claim1_evidence_files": all(path.is_file() for path in visible_files),
@@ -101,29 +113,37 @@ def main() -> int:
         "claim4_result_inline": current_page.is_file()
         and "exact rational cases" in current_page.read_text()
         and "target `1/4`" in current_page.read_text(),
+        "claim2_evidence_files": all(path.is_file() for path in claim2_visible_files),
+        "claim2_result_inline": current_page.is_file()
+        and "uniform lower bound `1/255`" in current_page.read_text()
+        and "Bayes means `1/3` and `3/5`" in current_page.read_text(),
     }
     passed = (
         all(checks.values())
         and claim1["passed"]
+        and claim2["passed"]
+        and claim2_independent["passed"]
         and claim3["passed"]
         and claim4["passed"]
         and claim5["passed"]
         and all(visibility_checks.values())
     )
     result = {
-        "campaign_stage": "claim_4_exact_wasserstein_stability",
+        "campaign_stage": "claim_2_cardinality_collision_falsification",
         "status": "VERIFIED" if passed else "BLOCKED",
         "passed_manifest_checks": passed,
         "checks": checks,
         "visibility_checks": visibility_checks,
         "claims": [
             {"claim": 1, "verdict": "VERIFIED" if claim1["passed"] else "BLOCKED"},
-            {"claim": 2, "verdict": "TOY"},
+            {"claim": 2, "verdict": "FALSIFIED" if claim2["passed"] else "BLOCKED"},
             {"claim": 3, "verdict": "VERIFIED" if claim3["passed"] else "BLOCKED"},
             {"claim": 4, "verdict": "VERIFIED" if claim4["passed"] else "BLOCKED"},
             {"claim": 5, "verdict": "VERIFIED" if claim5["passed"] else "BLOCKED"},
         ],
         "claim_1_certificate": claim1,
+        "claim_2_certificate": claim2,
+        "claim_2_independent_checker": claim2_independent,
         "claim_3_certificate": claim3,
         "claim_4_certificate": claim4,
         "claim_5_certificate": claim5,

@@ -1,0 +1,23 @@
+{
+  "assumptions": {
+    "T": 1,
+    "task_prior": {"f=-1": "1/2", "f=1": "1/2"},
+    "B_f": "1",
+    "P_X": "point mass at 0",
+    "noise": {"-2": "1/4", "0": "1/2", "2": "1/4"},
+    "noise_mean": "0",
+    "noise_variance_and_subgaussian_proxy": "2",
+    "alpha": "1",
+    "common_L": "1",
+    "holder_exact_cases": 212,
+    "passed": true
+  },
+  "posterior_and_collision": {
+    "k1_probability": "3/8",
+    "k2_probability": "5/32",
+    "k1_mean": "1/3",
+    "k2_mean": "3/5",
+    "lower_bound": "1/255",
+    "passed": true
+  }
+}

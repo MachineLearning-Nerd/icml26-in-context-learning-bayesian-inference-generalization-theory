@@ -1,0 +1,17 @@
+{
+  "claim": 2,
+  "source_anchor": "Thmtheorem2",
+  "supporting_anchors": ["Thmdefinition1", "Thmdefinition2", "Thmassumption1", "Thmassumption2", "Thmlemma5", "Thmlemma6"],
+  "domain": "Every prompt-generating process satisfying Definitions 1-2, Assumptions 1-2, the displayed Holder condition for k=1,...,p, and p>=2.",
+  "quantifiers": "For an ERM and feature count m, expected Bayes Gap has the displayed asymptotic upper bound; the implicit constant and polylog exponent are fixed independently of p,N.",
+  "statement": "E R_BG(M_hat) is at most, up to fixed constants, m^(-2alpha/d_eff)+m/(pN) polylog(pN)+1/N polylog(pN).",
+  "falsification_acceptance": [
+    "Construct one fixed data-generating process satisfying every stated assumption.",
+    "Prove a strictly positive Bayes-Gap lower bound for every theta and every m.",
+    "Show the claimed RHS tends to zero along an explicit integer sequence m_N.",
+    "Check posterior probabilities, Holder regularity, and the lower bound in exact arithmetic.",
+    "Include controls that remove the collision for the intended reason.",
+    "Rerun every previously accepted claim check."
+  ],
+  "non_circularity": "The counterexample fixes p=2 and its data law before taking N to infinity. Its lower bound is exact and independent of m,N; no fitted slope, tolerance, or formula-derived finite sample is used."
+}

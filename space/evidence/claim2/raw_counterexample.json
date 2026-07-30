@@ -1,0 +1,12 @@
+{
+  "claim": 2,
+  "status": "FALSIFIED",
+  "event_k1_probability": "3/8",
+  "event_k2_probability": "5/32",
+  "bayes_mean_k1": "1/3",
+  "bayes_mean_k2": "3/5",
+  "best_shared_prediction": "7/17",
+  "uniform_lower_bound_on_R_BG": "1/255",
+  "asymptotic_sequence": "p=2,d_eff=2,alpha=1,m_N=ceil(sqrt(N))",
+  "passed": true
+}

@@ -1,0 +1,13 @@
+{
+  "claim": 2,
+  "source_anchor": "Thmtheorem2",
+  "domain": "Every process satisfying Definitions 1-2, Assumptions 1-2, the Holder condition for all k, and p>=2.",
+  "statement": "E R_BG(M_hat) is bounded by m^(-2alpha/d_eff)+m/(pN)polylog(pN)+N^-1 polylog(pN), up to fixed constants.",
+  "falsification_acceptance": [
+    "One fixed process satisfies every assumption.",
+    "Every theta and m has a positive exact Bayes-Gap lower bound.",
+    "The claimed RHS tends to zero along an explicit integer sequence.",
+    "Exact checkers and controls pass."
+  ],
+  "non_circularity": "The fixed p=2 law has an m,N-independent exact lower bound; no fitted finite-sample budget is used."
+}

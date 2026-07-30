@@ -3,6 +3,55 @@
 This page is the canonical evaluator entrypoint. It supersedes the verifier in
 the judged revision `b604006ac298769e9dcee6ecb42b45369eb68cce`.
 
+## Claim 2 — FALSIFIED
+
+**Exact source statement.** Theorem 2 claims that the one ERM shared across
+every `k=1,...,p` has expected Bayes Gap bounded, up to fixed constants, by
+
+`m^(-2alpha/d_eff)+m/(pN)polylog(pN)+N^(-1)polylog(pN)`.
+
+**Assumption-satisfying counterexample.** Fix `p=2`, `d_feat=1`, `d_eff=2`,
+and one task type whose function prior is uniform on constant bounded
+functions `f_+(x)=1`, `f_-(x)=-1`. Inputs are identically zero. I.i.d. noise
+has masses `1/4,1/2,1/4` at `-2,0,2`; it is centered, has variance 2, and
+`E exp(lambda epsilon)=cosh²(lambda)<=exp(lambda²)`. Exact enumeration of 212
+positive-probability prompt pairs gives a common Hölder version with
+`alpha=1`, `L=1`; a symmetrized Lipschitz extension covers zero-probability
+sequences.
+
+For observation `y=1`, exact Bayes means `1/3` and `3/5` occur after one and
+two repetitions, with probabilities `3/8` and `5/32`. But Definition 2 gives
+both contexts the same representation:
+
+`phi(0,1)=[phi(0,1)+phi(0,1)]/2`.
+
+Thus every `theta` and every `m` must use one prediction on both events. The
+best such prediction is `7/17`, yielding the **uniform lower bound `1/255`**
+on average Bayes Gap. It applies to every realized ERM, so also after
+expectation over training data.
+
+**Contradiction.** With `m_N=ceil(sqrt(N))`, `p=2`, `d_eff=2`, `alpha=1`,
+all three claimed RHS terms tend to zero for every fixed polylog exponent and
+implicit constant, contradicting `E R_BG>=1/255`.
+
+**Proof gap and controls.** Lemma 5 constructs a decoder separately for each
+fixed `k`; the theorem requires one decoder across all `k`, while mean pooling
+does not encode cardinality. Giving `k` to the decoder makes the collision
+loss exactly zero. Making the observation equally likely under both tasks
+also makes the two posterior means equal, so both controls remove the
+counterexample for the intended reason.
+
+**Downloadable evidence.**
+
+- [Claim contract](../../evidence/claim2/claim_contract.json)
+- [Raw counterexample](../../evidence/claim2/raw_counterexample.json)
+- [Independent checker output](../../evidence/claim2/independent_checker_output.json)
+- [Negative-control output](../../evidence/claim2/negative_control_output.json)
+- [Executable source](../../evidence/claim2/claim2_counterexample.py)
+- [Independent closed-form source](../../evidence/claim2/claim2_independent.py)
+- [Method](../../evidence/claim2/method.md)
+- [Limitations](../../evidence/claim2/limitations.md)
+
 ## Claim 1 — VERIFIED
 
 **Exact source statement.** Under Definition 1 and Assumption 1, for every
@@ -159,7 +208,7 @@ domain, not invariant under input shift.
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
 |---|---|---|---|---|---|---|---|---|
 | 1 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
-| 2 | pending | no | no | no | no | no | no | TOY |
+| 2 | this page | yes | yes | yes | yes | yes | yes | FALSIFIED |
 | 3 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 4 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |

@@ -1,0 +1,13 @@
+{
+  "cardinality_aware_decoder": {
+    "change": "give k to the decoder",
+    "collision_event_loss": "0",
+    "counterexample_rejected": true
+  },
+  "uninformative_observation": {
+    "change": "make y=1 equally likely under both tasks",
+    "bayes_mean_k1": "0",
+    "bayes_mean_k2": "0",
+    "counterexample_rejected": true
+  }
+}
