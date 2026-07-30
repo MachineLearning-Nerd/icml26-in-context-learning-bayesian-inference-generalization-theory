@@ -47,6 +47,15 @@ def main() -> int:
         "claim4_verified": "Claim 4 — VERIFIED" in current_page,
         "claim5_verified": "Claim 5 — VERIFIED" in current_page,
         "historical_rejected_label": "Historical rejected baseline" in current_page,
+        "claim_audits_directly_linked": all(
+            f"../../evidence/claim{claim}/source_audit.md" in current_page
+            and f"../../evidence/claim{claim}/exact_command.md" in current_page
+            and f"../../evidence/claim{claim}/EVAL.md" in current_page
+            and (ROOT / f"evidence/claim{claim}/source_audit.md").is_file()
+            and (ROOT / f"evidence/claim{claim}/exact_command.md").is_file()
+            and (ROOT / f"evidence/claim{claim}/EVAL.md").is_file()
+            for claim in range(1, 6)
+        ),
     }
     passed = passed and all(visibility.values())
     result = {

@@ -35,6 +35,9 @@ The stacked lineage is:
 
 `protected baseline → Claim 1 → Claim 5 → Claim 3 → Claim 4 → Claim 2 falsification → release candidate`
 
+The final release-gate child descends from the release candidate and changes
+only evaluator discoverability and release evidence.
+
 The winning scientific branch is
 `orx/claim-2-cardinality-collision-falsification` at
 `fad5f06e7ee063dc370b14001fdcf88a3244b1f2`. The presentation/release branch
@@ -57,13 +60,17 @@ orx exp run 31609a9c-0487-4ab0-a7ef-63b431c56f41 --backend local
 orx exp run 793da3bb-fcd2-4a23-9391-013136e9cebb --backend local
 orx exp run 6b3de325-4d0e-451e-ad27-403efaf78f9d --backend local
 orx exp run 12795cac-65bd-4eaf-8ff9-63fc77859922 --backend local
+orx exp run 3c885d20-4b26-45a0-99d1-26975561bdbc --backend local
+orx exp run 696ad22a-431e-44bc-8b55-771cc8e95efa --backend local
 ```
 
 The verifier runtimes were 0.0258, 0.102255, 0.120083, 0.143983, 0.149517,
-and 0.142646 seconds. Total verifier runtime was 0.684284 seconds. Each run was
-estimated at one CPU core and under one minute, selected the local CPU backend,
-and reported one process thread. External compute cost: `$0`. Hugging Face CPU
-runtime and cost: `0`, because no task crossed the remote-compute threshold.
+0.142646, and 0.150948 seconds through the release-candidate run. Their total
+was 0.835232 seconds. Each run was estimated at one CPU core and under one
+minute, selected the local CPU backend, and reported one process thread. The
+final release-gate runtime is recorded in its OpenResearch run log. External
+compute cost: `$0`. Hugging Face CPU runtime and cost: `0`, because no task
+crossed the remote-compute threshold.
 
 ## Evidence paths
 

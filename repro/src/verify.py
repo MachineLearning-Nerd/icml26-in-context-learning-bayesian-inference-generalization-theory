@@ -19,6 +19,7 @@ from claim5_attention import build_certificate as build_claim5_certificate
 
 ROOT = Path(__file__).resolve().parents[2]
 ARTIFACTS = ROOT / ".openresearch" / "artifacts" / "baseline"
+RELEASE_ARTIFACTS = ROOT / ".openresearch" / "artifacts" / "release"
 EXPECTED_PAPER_SHA256 = "6173e746b37f95c44a391974f88c622e8ae77a3d1ca792bdfffb09f5c85a2aa1"
 EXPECTED_SPACE_REVISION = "b604006ac298769e9dcee6ecb42b45369eb68cce"
 EXPECTED_JUDGE_SCORE = 5
@@ -75,9 +76,59 @@ def baseline_checks() -> dict[str, bool]:
     }
 
 
+def release_checks() -> dict[str, bool]:
+    allowlist = (
+        RELEASE_ARTIFACTS / "space_text_upload_allowlist.txt"
+    ).read_text().splitlines()
+    manifest = {
+        line.split(maxsplit=1)[1]: line.split(maxsplit=1)[0]
+        for line in (
+            RELEASE_ARTIFACTS / "space_text_upload_manifest.sha256"
+        ).read_text().splitlines()
+    }
+    candidate_text_files = sorted(
+        str(path.relative_to(ROOT / "space"))
+        for path in (ROOT / "space").rglob("*")
+        if path.is_file() and path.suffix not in {".png", ".svg"}
+    )
+    forbidden_secret_markers = (
+        "authorization: bearer ",
+        "-----begin private key-----",
+        "hf_token=",
+        "api_key=",
+    )
+    combined_text = "\n".join(
+        (ROOT / "space" / relative_path).read_text(errors="replace").lower()
+        for relative_path in allowlist
+    )
+    red_team = (
+        ROOT / "reports" / "reproduction" / "evaluator_red_team.md"
+    ).read_text()
+
+    return {
+        "upload_allowlist_exact": allowlist == candidate_text_files,
+        "upload_manifest_same_paths": set(manifest) == set(allowlist),
+        "upload_manifest_hashes_match": all(
+            sha256(ROOT / "space" / relative_path) == manifest[relative_path]
+            for relative_path in allowlist
+        ),
+        "binary_assets_not_uploaded": all(
+            not relative_path.endswith((".png", ".svg"))
+            for relative_path in allowlist
+        ),
+        "secret_scan_clean": not any(
+            marker in combined_text for marker in forbidden_secret_markers
+        ),
+        "red_team_repeated_after_fix": (
+            "Conclusion: **PASS — release-ready**" in red_team
+        ),
+    }
+
+
 def main() -> int:
     started = time.monotonic()
     checks = baseline_checks()
+    release = release_checks()
     claim1 = build_certificate()
     claim2 = build_claim2_certificate()
     claim2_independent = check_claim2_independently()
@@ -86,35 +137,50 @@ def main() -> int:
     claim5 = build_claim5_certificate()
     current_page = ROOT / "space" / "pages" / "current" / "page.md"
     visible_files = [
+        ROOT / "space" / "evidence" / "claim1" / "EVAL.md",
         ROOT / "space" / "evidence" / "claim1" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim1" / "exact_command.md",
+        ROOT / "space" / "evidence" / "claim1" / "source_audit.md",
         ROOT / "space" / "evidence" / "claim1" / "raw_proof.json",
         ROOT / "space" / "evidence" / "claim1" / "independent_checker_output.json",
         ROOT / "space" / "evidence" / "claim1" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim1" / "claim1_proof.py",
     ]
     claim5_visible_files = [
+        ROOT / "space" / "evidence" / "claim5" / "EVAL.md",
         ROOT / "space" / "evidence" / "claim5" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim5" / "exact_command.md",
+        ROOT / "space" / "evidence" / "claim5" / "source_audit.md",
         ROOT / "space" / "evidence" / "claim5" / "raw_proof.json",
         ROOT / "space" / "evidence" / "claim5" / "independent_checker_output.json",
         ROOT / "space" / "evidence" / "claim5" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim5" / "claim5_attention.py",
     ]
     claim3_visible_files = [
+        ROOT / "space" / "evidence" / "claim3" / "EVAL.md",
         ROOT / "space" / "evidence" / "claim3" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim3" / "exact_command.md",
+        ROOT / "space" / "evidence" / "claim3" / "source_audit.md",
         ROOT / "space" / "evidence" / "claim3" / "raw_proof.json",
         ROOT / "space" / "evidence" / "claim3" / "independent_checker_output.json",
         ROOT / "space" / "evidence" / "claim3" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim3" / "claim3_concentration.py",
     ]
     claim4_visible_files = [
+        ROOT / "space" / "evidence" / "claim4" / "EVAL.md",
         ROOT / "space" / "evidence" / "claim4" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim4" / "exact_command.md",
+        ROOT / "space" / "evidence" / "claim4" / "source_audit.md",
         ROOT / "space" / "evidence" / "claim4" / "raw_proof.json",
         ROOT / "space" / "evidence" / "claim4" / "independent_checker_output.json",
         ROOT / "space" / "evidence" / "claim4" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim4" / "claim4_stability.py",
     ]
     claim2_visible_files = [
+        ROOT / "space" / "evidence" / "claim2" / "EVAL.md",
         ROOT / "space" / "evidence" / "claim2" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim2" / "exact_command.md",
+        ROOT / "space" / "evidence" / "claim2" / "source_audit.md",
         ROOT / "space" / "evidence" / "claim2" / "raw_counterexample.json",
         ROOT / "space" / "evidence" / "claim2" / "independent_checker_output.json",
         ROOT / "space" / "evidence" / "claim2" / "negative_control_output.json",
@@ -142,6 +208,13 @@ def main() -> int:
         "claim2_result_inline": current_page.is_file()
         and "uniform lower bound `1/255`" in current_page.read_text()
         and "Bayes means `1/3` and `3/5`" in current_page.read_text(),
+        "claim_audits_directly_linked": current_page.is_file()
+        and all(
+            f"../../evidence/claim{claim}/source_audit.md" in current_page.read_text()
+            and f"../../evidence/claim{claim}/exact_command.md" in current_page.read_text()
+            and f"../../evidence/claim{claim}/EVAL.md" in current_page.read_text()
+            for claim in range(1, 6)
+        ),
         "self_contained_space_verifier": all(
             path.is_file()
             for path in (
@@ -159,6 +232,7 @@ def main() -> int:
                 ROOT / "reports" / "reproduction" / "images" / "theorem3-proof-chain.svg",
                 ROOT / "reports" / "reproduction" / "images" / "theorem4-shift.svg",
                 ROOT / "reports" / "reproduction" / "release_report.md",
+                ROOT / "reports" / "reproduction" / "evaluator_red_team.md",
             )
         ),
         "tutorial_notebook_visible": (
@@ -171,6 +245,7 @@ def main() -> int:
     }
     passed = (
         all(checks.values())
+        and all(release.values())
         and claim1["passed"]
         and claim2["passed"]
         and claim2_independent["passed"]
@@ -184,6 +259,7 @@ def main() -> int:
         "status": "VERIFIED" if passed else "BLOCKED",
         "passed_manifest_checks": passed,
         "checks": checks,
+        "release_checks": release,
         "visibility_checks": visibility_checks,
         "claims": [
             {"claim": 1, "verdict": "VERIFIED" if claim1["passed"] else "BLOCKED"},

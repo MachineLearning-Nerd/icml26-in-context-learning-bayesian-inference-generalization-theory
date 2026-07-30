@@ -55,6 +55,9 @@ counterexample for the intended reason.
 **Downloadable evidence.**
 
 - [Claim contract](../../evidence/claim2/claim_contract.json)
+- [Source and assumption audit](../../evidence/claim2/source_audit.md)
+- [Exact command and environment](../../evidence/claim2/exact_command.md)
+- [Evaluation record](../../evidence/claim2/EVAL.md)
 - [Raw counterexample](../../evidence/claim2/raw_counterexample.json)
 - [Independent checker output](../../evidence/claim2/independent_checker_output.json)
 - [Negative-control output](../../evidence/claim2/negative_control_output.json)
@@ -94,12 +97,15 @@ uv run --locked python repro/src/verify.py
 ```
 
 Python `3.12.*`, no third-party dependencies, deterministic, no seed. Estimated
-and selected: one local CPU core, under one minute. Formal run metadata will be
-copied here after the OpenResearch run.
+and selected: one local CPU core, under one minute. Formal run metadata is in
+the provenance table below.
 
 **Downloadable evidence.**
 
 - [Claim contract](../../evidence/claim1/claim_contract.json)
+- [Source and assumption audit](../../evidence/claim1/source_audit.md)
+- [Exact command and environment](../../evidence/claim1/exact_command.md)
+- [Evaluation record](../../evidence/claim1/EVAL.md)
 - [Raw proof certificate](../../evidence/claim1/raw_proof.json)
 - [Independent checker output](../../evidence/claim1/independent_checker_output.json)
 - [Negative-control output](../../evidence/claim1/negative_control_output.json)
@@ -129,6 +135,9 @@ uniform attention.
 **Downloadable evidence.**
 
 - [Claim contract](../../evidence/claim5/claim_contract.json)
+- [Source and assumption audit](../../evidence/claim5/source_audit.md)
+- [Exact command and environment](../../evidence/claim5/exact_command.md)
+- [Evaluation record](../../evidence/claim5/EVAL.md)
 - [Raw proof certificate](../../evidence/claim5/raw_proof.json)
 - [Independent checker output](../../evidence/claim5/independent_checker_output.json)
 - [Negative-control output](../../evidence/claim5/negative_control_output.json)
@@ -167,6 +176,9 @@ assumptions gate rather than misreported as a counterexample.
 **Downloadable evidence.**
 
 - [Claim contract](../../evidence/claim3/claim_contract.json)
+- [Source and assumption audit](../../evidence/claim3/source_audit.md)
+- [Exact command and environment](../../evidence/claim3/exact_command.md)
+- [Evaluation record](../../evidence/claim3/EVAL.md)
 - [Raw proof certificate](../../evidence/claim3/raw_proof.json)
 - [Independent checker output](../../evidence/claim3/independent_checker_output.json)
 - [Negative-control output](../../evidence/claim3/negative_control_output.json)
@@ -207,6 +219,9 @@ domain, not invariant under input shift.
 **Downloadable evidence.**
 
 - [Claim contract](../../evidence/claim4/claim_contract.json)
+- [Source and assumption audit](../../evidence/claim4/source_audit.md)
+- [Exact command and environment](../../evidence/claim4/exact_command.md)
+- [Evaluation record](../../evidence/claim4/EVAL.md)
 - [Raw proof certificate](../../evidence/claim4/raw_proof.json)
 - [Independent checker output](../../evidence/claim4/independent_checker_output.json)
 - [Negative-control output](../../evidence/claim4/negative_control_output.json)
@@ -237,10 +252,12 @@ logical CPUs; each verifier used one process thread.
 | 3 | `8c193731318a615dea15e5b075bbe88d64f015ff` | `55589bde-2794-41a9-9bf0-4784bbb56182` | 0.143983 s | local CPU |
 | 4 | `afa6f38f58cdc95c92b63db3848bf9f32911a46c` | `436eaf4e-1d8f-48dc-89f1-0422b5f4c14c` | 0.149517 s | local CPU |
 | 2 | `fad5f06e7ee063dc370b14001fdcf88a3244b1f2` | `f9ec1820-b9c0-44ac-8075-39d845bd3890` | 0.142646 s | local CPU |
+| evaluator-visible release candidate | `4b74efb6e60d7d13eb25039b8920036c57e83723` | `aa73f9c0-9eb2-4c44-ae05-4a577195da88` | 0.150948 s | local CPU |
 
 Estimated before every run: one core and under one minute. Selected allocation:
 local CPU under the authorized short-task rule. Total verifier runtime across
-the six formal nodes was 0.684284 seconds; external compute cost was $0.
+the seven completed formal nodes was 0.835232 seconds; external compute cost
+was $0.
 
 ## Score forecast, not a judge result
 
