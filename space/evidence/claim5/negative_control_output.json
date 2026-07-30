@@ -1,0 +1,7 @@
+{
+  "control": "scores [0,1] instead of all-zero QK scores",
+  "weight_0": "0.26894142136999512074884075817816372563485535983494",
+  "weight_1": "0.73105857863000487925115924182183627436514464016506",
+  "nonuniform": true,
+  "rejected_as_uniform_attention": true
+}

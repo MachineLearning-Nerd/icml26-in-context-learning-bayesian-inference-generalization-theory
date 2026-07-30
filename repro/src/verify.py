@@ -10,6 +10,7 @@ import time
 from pathlib import Path
 
 from claim1_proof import build_certificate
+from claim5_attention import build_certificate as build_claim5_certificate
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -49,6 +50,7 @@ def main() -> int:
     started = time.monotonic()
     checks = baseline_checks()
     claim1 = build_certificate()
+    claim5 = build_claim5_certificate()
     current_page = ROOT / "space" / "pages" / "current" / "page.md"
     visible_files = [
         ROOT / "space" / "evidence" / "claim1" / "claim_contract.json",
@@ -57,6 +59,13 @@ def main() -> int:
         ROOT / "space" / "evidence" / "claim1" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim1" / "claim1_proof.py",
     ]
+    claim5_visible_files = [
+        ROOT / "space" / "evidence" / "claim5" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim5" / "raw_proof.json",
+        ROOT / "space" / "evidence" / "claim5" / "independent_checker_output.json",
+        ROOT / "space" / "evidence" / "claim5" / "negative_control_output.json",
+        ROOT / "space" / "evidence" / "claim5" / "claim5_attention.py",
+    ]
     visibility_checks = {
         "canonical_current_page": current_page.is_file(),
         "claim1_evidence_files": all(path.is_file() for path in visible_files),
@@ -64,8 +73,16 @@ def main() -> int:
         and "3,350 exact" in current_page.read_text(),
         "historical_verifier_labeled": current_page.is_file()
         and "Historical rejected baseline" in current_page.read_text(),
+        "claim5_evidence_files": all(path.is_file() for path in claim5_visible_files),
+        "claim5_result_inline": current_page.is_file()
+        and "873 exact context permutations" in current_page.read_text(),
     }
-    passed = all(checks.values()) and claim1["passed"] and all(visibility_checks.values())
+    passed = (
+        all(checks.values())
+        and claim1["passed"]
+        and claim5["passed"]
+        and all(visibility_checks.values())
+    )
     result = {
         "campaign_stage": "claim_1_exact_risk_identity",
         "status": "VERIFIED" if passed else "BLOCKED",
@@ -74,9 +91,11 @@ def main() -> int:
         "visibility_checks": visibility_checks,
         "claims": [
             {"claim": 1, "verdict": "VERIFIED" if claim1["passed"] else "BLOCKED"},
-            *[{"claim": index, "verdict": "TOY"} for index in range(2, 6)],
+            *[{"claim": index, "verdict": "TOY"} for index in range(2, 5)],
+            {"claim": 5, "verdict": "VERIFIED" if claim5["passed"] else "BLOCKED"},
         ],
         "claim_1_certificate": claim1,
+        "claim_5_certificate": claim5,
         "historical_limitation": (
             "The judged Space embeds verify.py but omits its imported core.py, so the numerical "
             "baseline cannot be independently regenerated from the protected revision."

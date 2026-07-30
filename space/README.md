@@ -23,7 +23,7 @@ revision `b604006ac298769e9dcee6ecb42b45369eb68cce`.
 - [Claim 1 executable source](evidence/claim1/claim1_proof.py)
 
 The old pages remain reachable below and are labeled **Historical rejected
-baseline**. Current result: Claim 1 `VERIFIED`; Claims 2–5 remain `TOY` and this
+baseline**. Current result: Claims 1 and 5 `VERIFIED`; Claims 2–4 remain `TOY` and this
 candidate is not release-ready.
 
 # Repro - ICL Bayesian Risk Decomposition

@@ -47,6 +47,35 @@ copied here after the OpenResearch run.
 - [Method](../../evidence/claim1/method.md)
 - [Limitations](../../evidence/claim1/limitations.md)
 
+## Claim 5 — VERIFIED
+
+**Exact source statement.** Definition 2 sets `Q=K=0` and defines
+`M_theta(P^k)=rho_theta(k^{-1} sum_i phi_theta(x_i,y_i),x_{k+1})`.
+
+**Actual attention mechanism.** The executable follows the scaled dot-product
+path. Zero queries and keys give zero scores; `exp(0)=1`, so softmax assigns
+exact weight `1/k` to each `V_i=phi_theta(x_i,y_i)`. Thus attention output is
+the displayed mean pool identically, before the decoder receives it and the
+query.
+
+**Independent checker.** Exact rational arithmetic verified equality and
+uniform weights for **873 exact context permutations** at lengths 1–6, with
+zero failures.
+
+**Negative control.** Scores `[0,1]` yield weights
+`0.268941421369995…` and `0.731058578630004…`; the checker rejects this as
+uniform attention.
+
+**Downloadable evidence.**
+
+- [Claim contract](../../evidence/claim5/claim_contract.json)
+- [Raw proof certificate](../../evidence/claim5/raw_proof.json)
+- [Independent checker output](../../evidence/claim5/independent_checker_output.json)
+- [Negative-control output](../../evidence/claim5/negative_control_output.json)
+- [Executable source](../../evidence/claim5/claim5_attention.py)
+- [Method](../../evidence/claim5/method.md)
+- [Limitations](../../evidence/claim5/limitations.md)
+
 ## Visibility matrix
 
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
@@ -55,7 +84,7 @@ copied here after the OpenResearch run.
 | 2 | pending | no | no | no | no | no | no | TOY |
 | 3 | pending | no | no | no | no | no | no | TOY |
 | 4 | pending | no | no | no | no | no | no | TOY |
-| 5 | pending | no | no | no | no | no | no | TOY |
+| 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 
 ## Historical rejected baseline
 

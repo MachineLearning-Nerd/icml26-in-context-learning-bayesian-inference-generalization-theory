@@ -1,0 +1,7 @@
+{
+  "claim": 5,
+  "status": "VERIFIED",
+  "identity": "Attention(Q=0,K=0,V)=softmax(0)V=(1/k)sum_i V_i",
+  "mapping": "V_i=phi_theta(x_i,y_i); rho_theta receives attention output and x_query",
+  "exact_arithmetic": true
+}

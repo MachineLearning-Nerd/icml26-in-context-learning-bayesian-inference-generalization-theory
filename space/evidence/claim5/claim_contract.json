@@ -1,0 +1,15 @@
+{
+  "claim": 5,
+  "source_anchor": "Thmdefinition2",
+  "domain": "Every nonempty context length k and every feature value sequence produced by phi_theta",
+  "quantifiers": "The architectural equality holds identically for Q=K=0",
+  "statement": "M_theta(P^k)=rho_theta(k^{-1} sum_i phi_theta(x_i,y_i), x_{k+1}) is exactly the Q=K=0 scaled dot-product attention architecture.",
+  "acceptance": [
+    "Execute the score, exponential, normalization, and value aggregation path.",
+    "All QK scores are exactly zero and every softmax weight is exactly 1/k.",
+    "The output equals direct mean pooling in exact rational arithmetic.",
+    "All 873 permutations for deterministic contexts of length 1 through 6 pass.",
+    "A nonzero-score control produces unequal attention weights and is rejected."
+  ],
+  "non_circularity": "The equality is algebraic; no fitted tolerance, sampling budget, or proxy encoder is used."
+}
