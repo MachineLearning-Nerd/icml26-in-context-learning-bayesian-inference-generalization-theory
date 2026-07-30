@@ -1,0 +1,12 @@
+{
+  "missing_identifiability": {
+    "input": "D_j=0",
+    "reason": "The theorem explicitly requires every D_j>0.",
+    "rejected": true
+  },
+  "weakened_variance_constant": {
+    "exact_residual": "1/16",
+    "rejected": true,
+    "replacement": "5*B_f^2 -> 3*B_f^2"
+  }
+}

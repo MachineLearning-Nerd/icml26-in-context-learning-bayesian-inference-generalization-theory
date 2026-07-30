@@ -1,0 +1,23 @@
+{
+  "claim": 3,
+  "source_anchor": "Thmtheorem3",
+  "assumptions": [
+    "Assumption 1: every task function is bounded by B_f on the support of P_X.",
+    "All task types use the common input distribution P_X from Definition 1.",
+    "Every wrong-task predictive log-likelihood increment has conditional drift at most -D_j with D_j>0.",
+    "For every |lambda|<=1/b_j, E[exp(lambda(Z_j,t+D_j)) | G_t-1,I=i*] <= exp(lambda^2 nu_j^2/2).",
+    "The true task prior mass alpha_i* is positive."
+  ],
+  "domain": "Every number of task types T>=2 and every context length k>=1 satisfying the displayed assumptions.",
+  "quantifiers": "The upper bound is universal in k and in every bounded task mixture satisfying the stated conditional drift and MGF conditions.",
+  "statement": "Expected mixture posterior variance is at most the true-family minimax risk plus 5 B_f^2[((1-alpha_i*)/alpha_i*) exp(-D_min k/2)+(T-1) exp(-Ck)], where C=min_j D_j^2/[8(nu_j^2+b_j D_j/2)].",
+  "acceptance": [
+    "Reconstruct the likelihood-ratio, concentration, posterior-odds, total-variance, and minimax steps without selecting a task family.",
+    "Verify that the chosen Chernoff lambda is inside the paper's stated MGF domain and implies the displayed C.",
+    "Use exact arithmetic checkers for every algebraic inequality.",
+    "Reject a strictly weaker variance coefficient on an assumption-satisfying bounded mixture.",
+    "Reject D_j=0 at the assumptions gate.",
+    "Inherit and rerun every previously accepted claim verifier."
+  ],
+  "non_circularity": "No k, task family, sample count, slope, or tolerance is chosen from the theorem. The proof is symbolic in k and the finite exact sweeps are independent bug detectors, not the logical basis of the universal verdict."
+}

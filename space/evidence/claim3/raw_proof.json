@@ -1,0 +1,14 @@
+{
+  "claim": 3,
+  "passed": true,
+  "proof_obligations": {
+    "all_k": "the derivation uses only k>=1 and is symbolic in k",
+    "concentration": "iterate the conditional MGF and apply Chernoff at lambda=D/[2(nu^2+bD/2)]",
+    "likelihood_ratio_chain": "common P_X cancels, so p_j(D^k)/p_i(D^k)=exp(sum_t Z_j,t)",
+    "minimax": "supremum risk dominates prior-average risk; posterior mean minimizes that average pointwise",
+    "posterior_odds": "1-pi_i=S/(1+S)<=S, then split on the concentration event",
+    "variance": "law of total variance gives within-type plus between-type variance; boundedness contributes at most (1+4)B_f^2 times wrong mass"
+  },
+  "route": "independent universal derivation plus exact rational checkers",
+  "status": "VERIFIED"
+}

@@ -76,13 +76,51 @@ uniform attention.
 - [Method](../../evidence/claim5/method.md)
 - [Limitations](../../evidence/claim5/limitations.md)
 
+## Claim 3 — VERIFIED
+
+**Exact source statement.** Under bounded task functions, common `P_X`, and the
+displayed conditional drift/MGF assumptions for every wrong task, Theorem 3
+states for every `k>=1` that mixture posterior variance is at most true-family
+minimax risk plus
+
+`5 B_f^2[((1-alpha_i*)/alpha_i*)e^(-D_min k/2)+(T-1)e^(-Ck)]`,
+
+where `C=min_j D_j^2/[8(nu_j^2+b_j D_j/2)]`.
+
+**Universal proof certificate.** Common `P_X` cancels in the predictive
+likelihood ratio. Iterating the conditional MGF and selecting
+`lambda=D/[2(nu^2+bD/2)]` gives a valid Chernoff parameter
+(`b*lambda<=1`) and an exponent at least the displayed `C`. Posterior odds
+satisfy `1-pi_i=S/(1+S)<=S`. Total variance over task type adds at most
+`(1+4)B_f^2` per unit wrong posterior mass. Finally, minimax risk dominates
+prior-average risk, whose pointwise optimum is the posterior mean. These steps
+are symbolic in every `k>=1`; no finite task family supplies the quantifier.
+
+**Independent checker.** Exact arithmetic completed **4,568 exact rational checks**:
+216 concentration-rate parameter cases, 3,402 mixture-variance
+cases, 575 posterior-odds cases, and 375 Bayes/minimax cases.
+
+**Negative controls.** Replacing coefficient 5 by 3 fails on a bounded
+two-task mixture by exact residual `1/16`. Setting `D_j=0` is rejected at the
+assumptions gate rather than misreported as a counterexample.
+
+**Downloadable evidence.**
+
+- [Claim contract](../../evidence/claim3/claim_contract.json)
+- [Raw proof certificate](../../evidence/claim3/raw_proof.json)
+- [Independent checker output](../../evidence/claim3/independent_checker_output.json)
+- [Negative-control output](../../evidence/claim3/negative_control_output.json)
+- [Executable source](../../evidence/claim3/claim3_concentration.py)
+- [Method](../../evidence/claim3/method.md)
+- [Limitations](../../evidence/claim3/limitations.md)
+
 ## Visibility matrix
 
 | Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
 |---|---|---|---|---|---|---|---|---|
 | 1 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 2 | pending | no | no | no | no | no | no | TOY |
-| 3 | pending | no | no | no | no | no | no | TOY |
+| 3 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 | 4 | pending | no | no | no | no | no | no | TOY |
 | 5 | this page | yes | yes | yes | yes | yes | yes | VERIFIED |
 

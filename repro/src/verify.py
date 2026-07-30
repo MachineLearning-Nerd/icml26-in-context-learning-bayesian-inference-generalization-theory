@@ -10,6 +10,7 @@ import time
 from pathlib import Path
 
 from claim1_proof import build_certificate
+from claim3_concentration import build_certificate as build_claim3_certificate
 from claim5_attention import build_certificate as build_claim5_certificate
 
 
@@ -50,6 +51,7 @@ def main() -> int:
     started = time.monotonic()
     checks = baseline_checks()
     claim1 = build_certificate()
+    claim3 = build_claim3_certificate()
     claim5 = build_claim5_certificate()
     current_page = ROOT / "space" / "pages" / "current" / "page.md"
     visible_files = [
@@ -66,6 +68,13 @@ def main() -> int:
         ROOT / "space" / "evidence" / "claim5" / "negative_control_output.json",
         ROOT / "space" / "evidence" / "claim5" / "claim5_attention.py",
     ]
+    claim3_visible_files = [
+        ROOT / "space" / "evidence" / "claim3" / "claim_contract.json",
+        ROOT / "space" / "evidence" / "claim3" / "raw_proof.json",
+        ROOT / "space" / "evidence" / "claim3" / "independent_checker_output.json",
+        ROOT / "space" / "evidence" / "claim3" / "negative_control_output.json",
+        ROOT / "space" / "evidence" / "claim3" / "claim3_concentration.py",
+    ]
     visibility_checks = {
         "canonical_current_page": current_page.is_file(),
         "claim1_evidence_files": all(path.is_file() for path in visible_files),
@@ -76,25 +85,32 @@ def main() -> int:
         "claim5_evidence_files": all(path.is_file() for path in claim5_visible_files),
         "claim5_result_inline": current_page.is_file()
         and "873 exact context permutations" in current_page.read_text(),
+        "claim3_evidence_files": all(path.is_file() for path in claim3_visible_files),
+        "claim3_result_inline": current_page.is_file()
+        and "4,568 exact rational checks" in current_page.read_text(),
     }
     passed = (
         all(checks.values())
         and claim1["passed"]
+        and claim3["passed"]
         and claim5["passed"]
         and all(visibility_checks.values())
     )
     result = {
-        "campaign_stage": "claim_1_exact_risk_identity",
+        "campaign_stage": "claim_3_exact_posterior_concentration",
         "status": "VERIFIED" if passed else "BLOCKED",
         "passed_manifest_checks": passed,
         "checks": checks,
         "visibility_checks": visibility_checks,
         "claims": [
             {"claim": 1, "verdict": "VERIFIED" if claim1["passed"] else "BLOCKED"},
-            *[{"claim": index, "verdict": "TOY"} for index in range(2, 5)],
+            {"claim": 2, "verdict": "TOY"},
+            {"claim": 3, "verdict": "VERIFIED" if claim3["passed"] else "BLOCKED"},
+            {"claim": 4, "verdict": "TOY"},
             {"claim": 5, "verdict": "VERIFIED" if claim5["passed"] else "BLOCKED"},
         ],
         "claim_1_certificate": claim1,
+        "claim_3_certificate": claim3,
         "claim_5_certificate": claim5,
         "historical_limitation": (
             "The judged Space embeds verify.py but omits its imported core.py, so the numerical "

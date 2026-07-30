@@ -1,0 +1,22 @@
+{
+  "bayes_minimax": {
+    "exact_cases": 375,
+    "passed": true
+  },
+  "bernstein_rate": {
+    "achieved_rate_minus_stated_rate": "b*D^3/[16(nu^2+bD/2)^2] >= 0",
+    "domain_check": "b*lambda <= 1",
+    "exact_parameter_cases": 216,
+    "lambda": "D/[2(nu^2+bD/2)]",
+    "passed": true
+  },
+  "mixture_variance": {
+    "exact_cases": 3402,
+    "passed": true
+  },
+  "posterior_odds": {
+    "exact_cases": 575,
+    "passed": true
+  },
+  "total_exact_cases": 4568
+}
