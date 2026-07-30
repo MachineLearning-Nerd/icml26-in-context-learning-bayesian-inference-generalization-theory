@@ -1,0 +1,20 @@
+{
+  "space_id": "DineshAI/BUFSSOuphA",
+  "orid": "BUFSSOuphA",
+  "paper_title": "In-Context Learning Is Provably Bayesian Inference: A Generalization Theory for Meta-Learning",
+  "sha": "b604006ac298769e9dcee6ecb42b45369eb68cce",
+  "judged_at": "2026-07-30T04:36:39+00:00",
+  "judge_model": "zai-org/GLM-5.2",
+  "score": 5,
+  "paper_source_sha256": "6173e746b37f95c44a391974f88c622e8ae77a3d1ca792bdfffb09f5c85a2aa1",
+  "verdict_dataset_revision": "d3cb671b76026d0fc001bb6369da0de6e2928c05",
+  "verdict_dataset_sha256": "8bbd0d3eb4dfaace909009995f03f23a7c36430702c27c83db5a7339d5ad0db0",
+  "claims": [
+    {"claim": 1, "verdict": "toy"},
+    {"claim": 2, "verdict": "toy"},
+    {"claim": 3, "verdict": "toy"},
+    {"claim": 4, "verdict": "toy"},
+    {"claim": 5, "verdict": "toy"}
+  ],
+  "overall": "All five claims were judged toy proxies."
+}
