@@ -1,0 +1,40 @@
+{
+  "schema_version": "1",
+  "paper": "In-Context Learning Is Provably Bayesian Inference: A Generalization Theory for Meta-Learning",
+  "paper_source": "arXiv:2510.10981",
+  "overall_status": "PARTIAL_CLAIMS_1_3_4_5_VERIFIED_CLAIM_2_THEOREM_2_FALSIFIED",
+  "claims": [
+    {
+      "id": "C1",
+      "status": "VERIFIED_SCOPED",
+      "evidence": "repro/src/claim1_proof.py",
+      "claim_page": "space/pages/current/page.md"
+    },
+    {
+      "id": "C2",
+      "status": "FALSIFIED_SCOPED",
+      "evidence": "repro/src/claim2_counterexample.py",
+      "independent_evidence": "repro/src/claim2_independent.py",
+      "claim_page": "space/pages/current/page.md"
+    },
+    {
+      "id": "C3",
+      "status": "VERIFIED_SCOPED",
+      "evidence": "repro/src/claim3_concentration.py",
+      "claim_page": "space/pages/current/page.md"
+    },
+    {
+      "id": "C4",
+      "status": "VERIFIED_SCOPED",
+      "evidence": "repro/src/claim4_stability.py",
+      "claim_page": "space/pages/current/page.md"
+    },
+    {
+      "id": "C5",
+      "status": "VERIFIED_SCOPED",
+      "evidence": "repro/src/claim5_attention.py",
+      "claim_page": "space/pages/current/page.md"
+    }
+  ]
+}
+

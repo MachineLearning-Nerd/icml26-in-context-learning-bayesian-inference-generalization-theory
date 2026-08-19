@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this reproduction or its audit artifacts, please cite this repository and the original paper."
+type: software
+title: "Independent reproduction of In-Context Learning Is Provably Bayesian Inference"
+version: "1.0.0"
+date-released: 2026-08-19
+authors:
+  - name: MachineLearning-Nerd
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-in-context-learning-bayesian-inference-generalization-theory"
+url: "https://github.com/MachineLearning-Nerd/icml26-in-context-learning-bayesian-inference-generalization-theory"
+abstract: "Scoped reproduction and claim audit of In-Context Learning Is Provably Bayesian Inference, with four verified proof or architecture contracts and a cardinality-collision falsification of the shared mean-pooled Theorem 2 statement."
+keywords:
+  - in-context learning
+  - Bayesian inference
+  - meta-learning
+  - reproduction
+  - claim audit
+preferred-citation:
+  type: article
+  title: "In-Context Learning Is Provably Bayesian Inference: A Generalization Theory for Meta-Learning"
+  authors:
+    - family-names: Wakayama
+      given-names: Tomoya
+    - family-names: Suzuki
+      given-names: Taiji
+  year: 2025
+  url: "https://arxiv.org/abs/2510.10981"
+

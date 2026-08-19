@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "paper_source": "arXiv:2510.10981",
+  "overall_status": "PARTIAL_CLAIMS_1_3_4_5_VERIFIED_CLAIM_2_THEOREM_2_FALSIFIED",
+  "required_evidence": [
+    "repro/src/verify.py",
+    "repro/src/claim1_proof.py",
+    "repro/src/claim2_counterexample.py",
+    "repro/src/claim2_independent.py",
+    "repro/src/claim3_concentration.py",
+    "repro/src/claim4_stability.py",
+    "repro/src/claim5_attention.py",
+    ".openresearch/artifacts/claim1",
+    ".openresearch/artifacts/claim2",
+    ".openresearch/artifacts/claim3",
+    ".openresearch/artifacts/claim4",
+    ".openresearch/artifacts/claim5",
+    "space/pages",
+    "space/evidence",
+    "branch-audit.md"
+  ],
+  "controls": {
+    "independent_checkers": true,
+    "negative_controls": true,
+    "source_version_pinned": true,
+    "cumulative_release_gates": true
+  },
+  "source_hashes": {
+    "ar5iv_html": "6173e746b37f95c44a391974f88c622e8ae77a3d1ca792bdfffb09f5c85a2aa1"
+  }
+}
+

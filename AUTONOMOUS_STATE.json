@@ -1,0 +1,28 @@
+{
+  "schema_version": "1",
+  "repository": "MachineLearning-Nerd/icml26-in-context-learning-bayesian-inference-generalization-theory",
+  "paper": "In-Context Learning Is Provably Bayesian Inference: A Generalization Theory for Meta-Learning",
+  "source_scope": "arXiv:2510.10981",
+  "overall_status": "PARTIAL_CLAIMS_1_3_4_5_VERIFIED_CLAIM_2_THEOREM_2_FALSIFIED",
+  "claim_statuses": {
+    "C1": "VERIFIED_SCOPED",
+    "C2": "FALSIFIED_SCOPED",
+    "C3": "VERIFIED_SCOPED",
+    "C4": "VERIFIED_SCOPED",
+    "C5": "VERIFIED_SCOPED"
+  },
+  "current_score_claim": false,
+  "publication_allowed": false,
+  "official_author_endorsement": false,
+  "canonical_identity": {
+    "name": "MachineLearning-Nerd",
+    "email": "MachineLearning-Nerd@users.noreply.github.com"
+  },
+  "recovery_bundle_sha256": "f71f3ac89f355a5f354afbf79c28b6f169f21a7a01e248af56c3af121b7e4779",
+  "notes": [
+    "Claims 1, 3, 4, and 5 are scoped proof or architecture verifications.",
+    "Claim 2 is a representation-collision falsification of the shared mean-pooled Theorem 2 statement.",
+    "The historical Gaussian proxy experiment is not current evidence."
+  ]
+}
+

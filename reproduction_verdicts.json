@@ -1,0 +1,27 @@
+{
+  "schema_version": "1",
+  "overall_status": "PARTIAL_CLAIMS_1_3_4_5_VERIFIED_CLAIM_2_THEOREM_2_FALSIFIED",
+  "source_scope": "arXiv:2510.10981",
+  "cumulative_evidence": "PASS",
+  "claims": {
+    "C1": "VERIFIED_SCOPED",
+    "C2": "FALSIFIED_SCOPED",
+    "C3": "VERIFIED_SCOPED",
+    "C4": "VERIFIED_SCOPED",
+    "C5": "VERIFIED_SCOPED"
+  },
+  "claim_2_boundary": {
+    "bayes_gap_lower_bound": "1/255",
+    "falsified_scope": "shared mean-pooled decoder and Theorem 2 as written",
+    "outside_scope": "cardinality-aware or sum-pooling decoder; fixed-context-length theorem"
+  },
+  "historical_score": {
+    "points": 5,
+    "total": 10,
+    "current_score_claim": false,
+    "forecast": "9/10-10/10"
+  },
+  "publication_allowed": false,
+  "official_author_endorsement": false
+}
+

@@ -26,6 +26,13 @@ contracts. Four claims are verified by universal proof or architecture
 certificates. Theorem 2 (the Bayes Gap rate) is falsified as written by an
 assumption-satisfying representation collision.
 
+Overall status: `PARTIAL_CLAIMS_1_3_4_5_VERIFIED_CLAIM_2_THEOREM_2_FALSIFIED`.
+This is a scoped audit of the shared mean-pooled architecture and the exact
+paper statements. A cardinality-aware or sum-pooling decoder is outside the
+falsified scope. `publication_allowed=false`, `score_claim=false`, and
+`official_author_endorsement=false` until an independent evaluator judges the
+public revision.
+
 | Release result | Meaning |
 | --- | --- |
 | Claims 1, 3, 4, and 5: **VERIFIED** | Exact symbolic or architectural certificates pass their independent checkers and controls. |
@@ -172,6 +179,10 @@ uv run --locked marimo run notebooks/icl_bayesian_reproduction.py
   doi={10.48550/arXiv.2510.10981}
 }
 ```
+
+Machine-readable citation metadata is also available in
+[`CITATION.cff`](CITATION.cff), and the author note is kept separately in
+[`AUTHOR_THANK_YOU.md`](AUTHOR_THANK_YOU.md).
 
 ## Thank you
 
